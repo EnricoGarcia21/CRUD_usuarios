@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <title>Cadastro de Usuário</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+    <script src="form_login_controller.js"></script>
+    <style>
+        body {
+            background: linear-gradient(135deg, #e0eafc 0%, #cfdef3 100%);
+            min-height: 100vh;
+        }
+        .card {
+            box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+            border-radius: 16px;
+        }
+        .table th, .table td {
+            vertical-align: middle;
+        }
+        .btn-primary {
+            background: linear-gradient(90deg, #007bff 0%, #00c6ff 100%);
+            border: none;
+        }
+        .btn-primary:hover {
+            background: linear-gradient(90deg, #0056b3 0%, #007bff 100%);
+        }
+        .fa-trash-can { color: #dc3545; cursor: pointer; }
+        .fa-pen-to-square { color: #0d6efd; cursor: pointer; }
+    </style>
+</head>
+<body onload="carregarTabela()">
+
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-6">
+            <div class="card p-4 mb-4">
+                <h2 class="mb-3 text-center"><i class="fa-solid fa-user-plus"></i> Cadastro de Usuário</h2>
+                <form name="user">
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="id" name="id" disabled>
+                        <label for="id">ID</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="nome" placeholder="Informe seu nome completo" name="nome">
+                        <label for="nome">Nome</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="login" placeholder="Informe o login que deseja usar" name="login">
+                        <label for="login">Login</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="password" class="form-control" id="passwd" placeholder="Informe a senha alfanumérica" name="passwd">
+                        <label for="passwd">Senha</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <select class="form-select" id="nivel" name="nivel">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                        </select>
+                        <label for="nivel">Nível de acesso</label>
+                    </div>
+                    <div class="d-grid gap-2">
+                        <button type="button" class="btn btn-primary btn-lg" onclick="cadUsuario()">
+                            <i class="fa-solid fa-paper-plane"></i> Enviar
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="card p-4">
+        <h4 class="mb-3 text-center"><i class="fa-solid fa-users"></i> Usuários Cadastrados</h4>
+        <div class="table-responsive">
+            <table class="table table-bordered align-middle text-center">
+                <thead class="table-light">
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>Login</th>
+                        <th>Senha</th>
+                        <th>Nível</th>
+                        <th>Apagar</th>
+                        <th>Alterar</th>
+                    </tr>
+                </thead>
+                <tbody id="dados">
+                    <!-- Dados dinâmicos aqui -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
