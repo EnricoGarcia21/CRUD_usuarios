@@ -11,10 +11,11 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 @CrossOrigin
 @RestController
-@RequestMapping(value = "apis")
+@RequestMapping(value = "apis/user")
 public class UsuarioRestController {
     @Autowired
     private UsuarioService usuarioService;
+
     @GetMapping(value = "get-all")
     ResponseEntity<Object> getAll(){
         List<Usuario> usuarioList;
@@ -44,7 +45,7 @@ public class UsuarioRestController {
         return ResponseEntity.ok(usuario);
     }
 
-    @PostMapping(value = "add-user")
+    @PostMapping
     ResponseEntity<Object> addUser(@RequestBody Usuario usuario){
         if(usuario!=null){
             try {
@@ -58,7 +59,7 @@ public class UsuarioRestController {
         return ResponseEntity.badRequest().body(new Erro("Erro ao inserir novo usuario","usuario inconsistente"));
     }
 
-    @PutMapping(value = "update-user")
+    @PutMapping
     ResponseEntity<Object> updateUser(@RequestBody Usuario usuario){
         if(usuario!=null && usuario.getId()!=0){
             try {
@@ -72,7 +73,7 @@ public class UsuarioRestController {
         return ResponseEntity.badRequest().body(new Erro("Erro ao alterar usuario","usuario inconsistente"));
     }
 
-    @DeleteMapping(value="delete-user/{id}")
+    @DeleteMapping(value="/{id}")
     ResponseEntity<Object> deleteUser(@PathVariable Long id)
     {
         if(usuarioService.deleteUser(id))
