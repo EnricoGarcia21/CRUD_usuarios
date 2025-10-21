@@ -13,6 +13,7 @@ import java.util.List;
 public class UsuarioService {
     @Autowired
     private UsuarioRepository usuarioRepository;
+
     public List<Usuario> getAll(String keyword){
         List<Usuario> usuarioList=new ArrayList<>();
         if(keyword.isEmpty())
@@ -43,5 +44,11 @@ public class UsuarioService {
             return true;
         }
         return false;
+    }
+
+    public Usuario getByLogin(String login) {
+        Usuario usuario;
+        usuario=usuarioRepository.findByLogin(login).orElse(null);
+        return usuario;
     }
 }
