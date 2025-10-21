@@ -14,7 +14,7 @@ function Logar() {
         redirect: "follow"
     };
 
-    fetch("http://localhost:8080/apis/acesso/logar", requestOptions)
+    fetch("http://localhost:8080/acesso/logar", requestOptions)
         .then((response) =>{
             if(response.ok)
                 return response.text();
